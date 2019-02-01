@@ -32,3 +32,14 @@ Credits
 -------
 Based on Aurélien APTEL <aurelien dot aptel at gmail dot com> bt source code.
 
+
+Addendum
+--------
+
+This fork of simple terminal sets a different font by default, namely Hack
+(https://sourcefoundry.org/hack/), and Solarized themes (default to "dark").
+
+To select the theme at compile time, use either of these commands:
+
+    make SOLARIZED_THEME=SOLARIZED_DARK
+    make SOLARIZED_THEME=SOLARIZED_LIGHT

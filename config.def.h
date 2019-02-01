@@ -82,27 +82,49 @@ char *termname = "st-256color";
  */
 unsigned int tabspaces = 8;
 
+/*
+ * Solarized theme colors from Ethan Schoonover.
+ * https://ethanschoonover.com/solarized/
+ */
+#define S_base03  "#002b36"
+#define S_base02  "#073642"
+#define S_base01  "#586e75"
+#define S_base00  "#657b83"
+#define S_base0   "#839496"
+#define S_base1   "#93a1a1"
+#define S_base2   "#eee8d5"
+#define S_base3   "#fdf6e3"
+
+#define S_yellow  "#b58900"
+#define S_orange  "#cb4b16"
+#define S_red     "#dc322f"
+#define S_magenta "#d33682"
+#define S_violet  "#6c71c4"
+#define S_blue    "#268bd2"
+#define S_cyan    "#2aa198"
+#define S_green   "#859900"
+
 /* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
 	/* 8 normal colors */
-	"black",
-	"red3",
-	"green3",
-	"yellow3",
-	"blue2",
-	"magenta3",
-	"cyan3",
-	"gray90",
+	S_base02,
+	S_red,
+	S_green,
+	S_yellow,
+	S_blue,
+	S_magenta,
+	S_cyan,
+	S_base2,
 
 	/* 8 bright colors */
-	"gray50",
-	"red",
-	"green",
-	"yellow",
-	"#5c5cff",
-	"magenta",
-	"cyan",
-	"white",
+	S_base03,
+	S_orange,
+	S_base01,
+	S_base00,
+	S_base0,
+	S_violet,
+	S_base1,
+	S_base3,
 
 	[255] = 0,
 
@@ -115,11 +137,21 @@ static const char *colorname[] = {
 /*
  * Default colors (colorname index)
  * foreground, background, cursor, reverse cursor
+ * Varies for Solarized Dark and Light
  */
-unsigned int defaultfg = 7;
-unsigned int defaultbg = 0;
-static unsigned int defaultcs = 256;
-static unsigned int defaultrcs = 257;
+#if defined(SOLARIZED_DARK)
+unsigned int defaultfg = 12;         /* S_base0 */
+unsigned int defaultbg = 8;          /* S_base03 */
+static unsigned int defaultcs = 14;  /* S_base1 */
+static unsigned int defaultrcs = 10; /* S_base01 */
+#elif defined(SOLARIZED_LIGHT)
+unsigned int defaultfg = 11;         /* S_base00 */
+unsigned int defaultbg = 15;         /* S_base3 */
+static unsigned int defaultcs = 10;  /* S_base01 */
+static unsigned int defaultrcs = 14; /* S_base1 */
+#else
+#error "Missing define: either SOLARIZED_DARK or SOLARIZED_LIGHT"
+#endif
 
 /*
  * Default shape of cursor
