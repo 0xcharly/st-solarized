@@ -43,3 +43,6 @@ To select the theme at compile time, use either of these commands:
 
     make SOLARIZED_THEME=SOLARIZED_DARK
     make SOLARIZED_THEME=SOLARIZED_LIGHT
+
+It also disables using bright colors for bold text. To re-enable this behavior,
+use `-DDRAW_BOLD_TEXT_IN_BRIGHT_COLORS` (see the config.mk file).
